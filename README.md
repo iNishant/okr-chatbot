@@ -1,1 +1,1 @@
-# okr-chatbot
+# OKR-chatbot
