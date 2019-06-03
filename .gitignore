@@ -4,3 +4,4 @@
 **/*.pkl
 **/*.icloud
 **/*.vscode
+**/*node_modules
