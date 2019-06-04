@@ -1,7 +1,7 @@
 {
   "version": 2,
   "builds": [
-    { "src": "server.js", "use": "@now/node-server" }
+    { "src": "src/server.js", "use": "@now/node-server" }
   ],
   "env": {
     "OKR_BOT_TOKEN": "@okr_bot_token"
