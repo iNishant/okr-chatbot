@@ -1,7 +1,10 @@
 {
   "version": 2,
   "builds": [
-    { "src": "src/server.js", "use": "@now/node-server" }
+    { "src": "server.js", "use": "@now/node-server" }
+  ],
+  "routes": [
+    { "src": "/", "dest": "server.js" }
   ],
   "env": {
     "OKR_BOT_TOKEN": "@okr_bot_token"
