@@ -11,7 +11,9 @@ app.use(bodyParser.json());
 
 function slackAPIVerifier(req, res) {
   // needs to respond back with same challenge
-  res.send({ challenge: req.body.challenge });
+  let challenge = 'Hello world'; // some random message
+  if (req.body && req.body.challenge) challenge = req.body.challenge;
+  res.send({ challenge });
 }
 
 function sendSlackMessage(body, channel, token) {
@@ -55,6 +57,8 @@ function messageEventHandler(req, res) {
 }
 
 app.post('/', messageEventHandler);
+
+app.get('/', slackAPIVerifier);
 
 app.listen(
   port,
