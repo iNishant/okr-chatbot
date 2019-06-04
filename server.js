@@ -16,7 +16,7 @@ function slackAPIVerifier(req, res) {
   res.send({ challenge });
 }
 
-function sendSlackMessage(body, channel) {
+function sendSlackMessage(body, channel, callback) {
   const data = {
     text: body,
     channel: channel,
@@ -31,7 +31,7 @@ function sendSlackMessage(body, channel) {
 	  },
   };
   request(options, (error, response, body) => {
-    // console.log(body);
+    callback(error, response, body);
 	});
 }
 
@@ -48,8 +48,8 @@ function messageEventHandler(req, res) {
     sendSlackMessage(
       "Hello from our backend",
       channel,
+      (error, response, body) => res.send(body),
     );
-    res.send({ OKR_BOT_TOKEN });
   } else {
     slackAPIVerifier(req, res);
   }
