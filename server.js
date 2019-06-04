@@ -49,7 +49,7 @@ function messageEventHandler(req, res) {
       "Hello from our backend",
       channel,
     );
-    res.send();
+    res.send({ OKR_BOT_TOKEN });
   } else {
     slackAPIVerifier(req, res);
   }
