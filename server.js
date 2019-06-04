@@ -4,7 +4,7 @@ const request = require("request");
 
 const app = express();
 const port = 3000;
-const BOT_TOKEN = process.env.OKR_BOT_TOKEN;
+const OKR_BOT_TOKEN = process.env.OKR_BOT_TOKEN;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -16,7 +16,7 @@ function slackAPIVerifier(req, res) {
   res.send({ challenge });
 }
 
-function sendSlackMessage(body, channel, token) {
+function sendSlackMessage(body, channel) {
   const data = {
     text: body,
     channel: channel,
@@ -26,7 +26,7 @@ function sendSlackMessage(body, channel, token) {
 	  url: "https://slack.com/api/chat.postMessage",
 	  body: JSON.stringify(data),
 	  headers: {
-	    'Authorization': `Bearer ${token}`,
+	    'Authorization': `Bearer ${OKR_BOT_TOKEN}`,
 	    'Content-Type': 'application/json',
 	  },
   };
@@ -48,7 +48,6 @@ function messageEventHandler(req, res) {
     sendSlackMessage(
       "Hello from our backend",
       channel,
-      BOT_TOKEN,
     );
     res.send();
   } else {
