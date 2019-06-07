@@ -1,6 +1,5 @@
 {
   "version": 2,
-  "region": "bom1",
   "builds": [
     { "src": "rasa/server.py", "use": "@now/python" }
   ],
