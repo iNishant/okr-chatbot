@@ -1,10 +1,11 @@
 {
   "version": 2,
+  "region": "bom1",
   "builds": [
-    { "src": "server.js", "use": "@now/node-server" }
+    { "src": "rasa/server.py", "use": "@now/python" }
   ],
   "routes": [
-    { "src": "/", "dest": "server.js" }
+    { "src": "/", "dest": "rasa/server.py" }
   ],
   "env": {
     "OKR_BOT_TOKEN": "@okr_bot_token"
