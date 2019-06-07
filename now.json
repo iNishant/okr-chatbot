@@ -1,7 +1,7 @@
 {
   "version": 2,
   "builds": [
-    { "src": "rasa/server.py", "use": "@now/python" }
+    { "src": "rasa/server.py", "use": "@now/python", "config": { "maxLambdaSize": "300mb" } }
   ],
   "routes": [
     { "src": "/", "dest": "rasa/server.py" }
