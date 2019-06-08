@@ -1,8 +1,10 @@
 # OKR-chatbot
 
-## Setup instructions for node server
+## Instructions for EC2 (> Small instance)
 
-- Set environment variable `OKR_BOT_TOKEN`
+- Install pip3 using `sudo apt-get install python3-pip`
+- Install rasa using `pip install rasa-x --extra-index-url https://pypi.rasa.com/simple`
+- Install [NLU pipeline dependencies](http://rasa.com/docs/rasa/user-guide/installation/#nlu-pipeline-dependencies)
 
 ## Stack
 
