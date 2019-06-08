@@ -1,6 +1,6 @@
 # OKR-chatbot
 
-## Instructions for EC2 (> Small instance)
+## Installation instructions (>= 8GB RAM)
 
 - Install pip3 using `sudo apt-get install python3-pip`
 - Install rasa using `pip install rasa-x --extra-index-url https://pypi.rasa.com/simple`
