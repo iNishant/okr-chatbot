@@ -1,31 +1,24 @@
 intents:
-  - greet
-  - goodbye
+  - create_okr # okr in the same message
+  - update_okr
   - affirm
   - deny
-  - mood_great
-  - mood_unhappy
+  - delete_okr
 
 actions:
-- utter_greet
-- utter_cheer_up
-- utter_did_that_help
-- utter_happy
-- utter_goodbye
+- create_new_okr
+- update_existing_okr
+- delete_existing_okr
 
 templates:
-  utter_greet:
-  - text: "Hey! How are you?"
+  utter_select_okr:
+  - text: "Select OKR"
+  
+  utter_okr_created:
+  - text: "OKR created successfully"
 
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
+  utter_okr_updated:
+  - text: "OKR updated successfully"
 
-  utter_did_that_help:
-  - text: "Did that help you?"
-
-  utter_happy:
-  - text: "Great carry on!"
-
-  utter_goodbye:
-  - text: "Bye"
+  utter_okr_deleted:
+  - text: "OKR deleted successfully"
