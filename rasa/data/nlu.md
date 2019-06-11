@@ -3,10 +3,7 @@
 - create an okr
 - add okr to the database
 - add okr
-- how can I create an okr?
-- I should create an okr?
-- I would like to add an okr?
-- Can I add an okr manually?
+
 
 ## intent:update_okr
 - update okr
