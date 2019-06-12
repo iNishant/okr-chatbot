@@ -1,21 +1,19 @@
 ## intent:create_okr
-- allow me to create an okr
-- create an okr
-- add okr to the database
+- create okr
 - add okr
-
 
 ## intent:update_okr
 - update okr
-- update
-- change
-- edit existing okr
+- change okr
+- edit okr
 
 ## intent:delete_okr
 - remove okr
 - delete okr
-- erase okr
-- flush okr
+
+## intent:list_okr
+- list okrs
+- my okrs
 
 ## intent:affirm
 - yes

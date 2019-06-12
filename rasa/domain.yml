@@ -1,14 +1,21 @@
 intents:
-  - create_okr # okr in the same message
+  - create_okr
   - update_okr
+  - list_okr
   - affirm
   - deny
   - delete_okr
 
 actions:
+- utter_select_okr
+- utter_okr_created
+- utter_okr_updated
+- utter_okr_deleted
+- utter_okr_listed
 - create_new_okr
 - update_existing_okr
 - delete_existing_okr
+- list_okr
 
 templates:
   utter_select_okr:
@@ -22,3 +29,6 @@ templates:
 
   utter_okr_deleted:
   - text: "OKR deleted successfully"
+
+  utter_okr_listed:
+  - text: "OKR listed successfully"
