@@ -7,10 +7,12 @@ intents:
   - delete_okr
 
 actions:
-- utter_select_okr
+- utter_select_okr_for_updating
+- utter_select_okr_for_deleting
 - utter_okr_created
 - utter_okr_updated
 - utter_okr_deleted
+- utter_enter_okr
 - utter_okr_listed
 - create_new_okr
 - update_existing_okr
@@ -18,11 +20,17 @@ actions:
 - list_okr
 
 templates:
-  utter_select_okr:
-  - text: "Select OKR"
+  utter_select_okr_for_deleting:
+  - text: "Select OKR for deleting"
+
+  utter_select_okr_for_updating:
+  - text: "Select OKR for updating"
   
   utter_okr_created:
   - text: "OKR created successfully"
+
+  utter_enter_okr:
+  - text: "Enter the text for your new OKR"
 
   utter_okr_updated:
   - text: "OKR updated successfully"
