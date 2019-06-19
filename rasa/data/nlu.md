@@ -1,6 +1,10 @@
 ## intent:create_okr
 - create okr
+- create a new okr
 - add okr
+- add a new okr
+- add an okr
+- new okr
 
 ## intent:update_okr
 - update okr
@@ -12,7 +16,9 @@
 - delete okr
 
 ## intent:list_okr
+- list okr
 - list okrs
+- my okr
 - my okrs
 
 ## intent:affirm

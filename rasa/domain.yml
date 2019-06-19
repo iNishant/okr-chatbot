@@ -7,30 +7,27 @@ intents:
   - delete_okr
 
 actions:
-- utter_select_okr_for_updating
-- utter_select_okr_for_deleting
 - utter_okr_created
 - utter_okr_updated
 - utter_okr_deleted
-- utter_enter_okr
 - utter_okr_listed
-- create_new_okr
-- update_existing_okr
-- delete_existing_okr
-- list_okr
+- utter_did_not_understand
+
+slots:
+  new_okr:
+    type: unfeaturized
+    auto_fill: false
+  select_okr_query:
+    type: unfeaturized
+    auto_fill: false
+  updated_okr:
+    type: unfeaturized
+    auto_fill: false
 
 templates:
-  utter_select_okr_for_deleting:
-  - text: "Select OKR for deleting"
 
-  utter_select_okr_for_updating:
-  - text: "Select OKR for updating"
-  
   utter_okr_created:
   - text: "OKR created successfully"
-
-  utter_enter_okr:
-  - text: "Enter the text for your new OKR"
 
   utter_okr_updated:
   - text: "OKR updated successfully"
@@ -40,3 +37,20 @@ templates:
 
   utter_okr_listed:
   - text: "OKR listed successfully"
+
+  utter_did_not_understand:
+  - text: "I didn't understand you"
+
+  utter_ask_updated_okr:
+  - text: "Enter the text for your updated OKR"
+
+  utter_ask_select_okr_query:
+  - text: "Select OKR"
+
+  utter_ask_new_okr:
+  - text: "Enter the text for your new OKR"
+
+forms:
+  - new_okr_form
+  - update_okr_form
+  - delete_okr_form

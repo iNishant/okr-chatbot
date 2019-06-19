@@ -1,5 +1,5 @@
 # Configuration for Rasa NLU.
-# https://rasa.com/docs/rasa/nlu/components/
+# https://rasa. c com/docs/rasa/nlu/components/
 language: en
 pipeline: supervised_embeddings
 
@@ -9,3 +9,4 @@ policies:
   - name: MemoizationPolicy
   - name: KerasPolicy
   - name: MappingPolicy
+  - name: "FormPolicy"

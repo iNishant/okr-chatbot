@@ -1,25 +1,22 @@
 ## create okr path
 * create_okr
-  - utter_enter_okr
-  - action_listen <!-- add custom action after this to get user input -->
-  - utter_okr_created
-  - action_restart
+  - new_okr_form
+  - form{"name": "new_okr_form"}
+  - form{"name": null}
 
 ## update okr path
 * update_okr
-  - utter_select_okr_for_updating
-  - action_listen <!-- add custom action after this -->
-  - utter_okr_updated
-  - action_restart
+  - update_okr_form
+  - form{"name": "update_okr_form"}
+  - form{"name": null}
 
 ## delete okr path
 * delete_okr
-  - utter_select_okr_for_deleting
-  - action_listen <!-- add custom action after this -->
-  - utter_okr_deleted
-  - action_restart
+  - delete_okr_form
+  - form{"name": "delete_okr_form"}
+  - form{"name": null}
+
 
 ## list okr path
 * list_okr
   - utter_okr_listed
-  - action_restart
