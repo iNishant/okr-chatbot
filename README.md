@@ -14,4 +14,4 @@
 ## Commands
 
 - Run RASA core using `rasa run`
-- Run RASA custom actions server using `rasa run actiions`
+- Run RASA custom actions server using `rasa run actions`
