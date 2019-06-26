@@ -12,12 +12,18 @@ actions:
 - utter_okr_deleted
 - utter_okr_listed
 - utter_did_not_understand
+- utter_error_occurred
+- action_list_okrs
+- action_list_okrs_for_selection
 
 slots:
   new_okr:
     type: unfeaturized
     auto_fill: false
-  select_okr_query:
+  selected_okr:
+    type: unfeaturized
+    auto_fill: false
+  okrs_list:
     type: unfeaturized
     auto_fill: false
   updated_okr:
@@ -44,11 +50,14 @@ templates:
   utter_ask_updated_okr:
   - text: "Enter the text for your updated OKR"
 
-  utter_ask_select_okr_query:
+  utter_ask_selected_okr:
   - text: "Select OKR"
 
   utter_ask_new_okr:
   - text: "Enter the text for your new OKR"
+
+  utter_error_occurred:
+  - text: "An error occurred. Please try again."
 
 forms:
   - new_okr_form
