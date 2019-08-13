@@ -1,7 +1,8 @@
 # Configuration for Rasa NLU.
 # https://rasa. c com/docs/rasa/nlu/components/
 language: en
-pipeline: supervised_embeddings
+pipeline: pretrained_embeddings_spacy
+# change to supervised pipeline once training examples > 1000
 
 # Configuration for Rasa Core.
 # https://rasa.com/docs/rasa/core/policies/
