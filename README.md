@@ -30,9 +30,22 @@
 ## Environment variables
 
 - Set `SLACK_BOT_USER_ACCESS_TOKEN` (add in bash profile)
-- Set `FIREBASE_CREDENTIALS_FILE_PATH`
-- Set `FIREBASE_PROJECT_ID`
 
 ## Implemented Conversation Flows
 
-TODO
+### Create okr
+- Person: Create objective
+- Bot: Enter title for this objective
+- Person: Increase sales
+- Bot: Do you want to add a key result for this objective?
+- Person: Yes
+- Bot: Enter title for the key result
+- Person: Increase sales leads/week
+- Bot: What is the metric for this key result?
+- Person: leads
+- Bot: What is the start value for {leads}?
+- Person: 20
+- Bot: What is the goal value for {leads}?
+- Person: 100
+- Bot: Key result created successfully. Do you want to add one more?
+- Person: No

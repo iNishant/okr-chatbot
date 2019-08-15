@@ -1,24 +1,20 @@
-## create okr path
-* create_okr
-  - new_okr_form
-  - form{"name": "new_okr_form"}
+## create objective path
+* create_objective
+  - new_objective_form
+  - form{"name": "new_objective_form"}
+  - form{"name": null}
+  - action_ask_add_key_result
+* affirm
+  - new_key_result_form
+  - form{"name": "new_key_result_form"}
   - form{"name": null}
 
-## update okr path
-* update_okr
-  - action_list_okrs_for_selection
-  - update_okr_form
-  - form{"name": "update_okr_form"}
+## create key result path
+* create_key_result
+  - new_key_result_form
+  - form{"name": "new_key_result_form"}
   - form{"name": null}
 
-## delete okr path
-* delete_okr
-  - action_list_okrs_for_selection
-  - delete_okr_form
-  - form{"name": "delete_okr_form"}
+## deactivate form
+* deactivate_form
   - form{"name": null}
-
-
-## list okr path
-* list_okr
-  - action_list_okrs

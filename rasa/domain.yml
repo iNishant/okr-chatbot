@@ -1,65 +1,60 @@
 intents:
-  - create_okr
-  - update_okr
-  - list_okr
+  - create_objective
+  - create_key_result
+  - deactivate_form
   - affirm
   - deny
-  - delete_okr
 
 actions:
-- utter_okr_created
-- utter_okr_updated
-- utter_okr_deleted
-- utter_okr_listed
-- utter_did_not_understand
-- utter_error_occurred
-- action_list_okrs
-- action_list_okrs_for_selection
+- action_ask_add_key_result
+- utter_debug
 
 slots:
-  new_okr:
+  objective_title:
     type: unfeaturized
     auto_fill: false
-  selected_okr:
+  selected_objective:
     type: unfeaturized
     auto_fill: false
-  okrs_list:
+  kr_title:
     type: unfeaturized
     auto_fill: false
-  updated_okr:
+  kr_start_value:
+    type: unfeaturized
+    auto_fill: false
+  kr_goal_value:
     type: unfeaturized
     auto_fill: false
 
 templates:
 
-  utter_okr_created:
-  - text: "OKR created successfully"
+  utter_ask_objective_title:
+  - text: "Enter the objective for your new OKR"
 
-  utter_okr_updated:
-  - text: "OKR updated successfully"
+  utter_objective_created:
+  - text: "Objective created successfully"
 
-  utter_okr_deleted:
-  - text: "OKR deleted successfully"
+  utter_ask_add_key_result:
+  - text: 'Do you want to add a key result for this objective?'
 
-  utter_okr_listed:
-  - text: "OKR listed successfully"
+  utter_ask_kr_title:
+  - text: 'Enter title for the key result'
 
-  utter_did_not_understand:
-  - text: "I didn't understand you"
+  utter_ask_kr_start_value:
+  - text: 'Enter start value for the key result metric'
 
-  utter_ask_updated_okr:
-  - text: "Enter the text for your updated OKR"
+  utter_ask_kr_goal_value:
+  - text: 'Enter goal value for the key result metric'
 
-  utter_ask_selected_okr:
-  - text: "Select OKR"
-
-  utter_ask_new_okr:
-  - text: "Enter the text for your new OKR"
+  utter_key_result_created:
+  - text: 'Key result created successfully'
 
   utter_error_occurred:
   - text: "An error occurred. Please try again."
 
+  utter_debug:
+  - text: "Bot is here"
+
 forms:
-  - new_okr_form
-  - update_okr_form
-  - delete_okr_form
+  - new_objective_form
+  - new_key_result_form

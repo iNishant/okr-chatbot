@@ -1,12 +1,16 @@
-from typing import Dict, Text, Any, List, Union, Optional
+from typing import Dict, Text, Any, List, Union
 from rasa_sdk import Tracker, Action
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.forms import FormAction
 from rasa_sdk.events import SlotSet, AllSlotsReset, Restarted
-from slack_utils import getUserEmailFromUserID
-from firebase_utils import createNewOKR, updateExistingOKR, deleteExistingOKR, listOKRs
+from helper import (
+    getUserFromSlackId,
+    createNewObjective,
+    createNewKeyResult
+)
 
 # tracker.sender_id gives slack user's ID
+
 
 def okrsListString(okrs):
     message = ''
@@ -24,19 +28,19 @@ def unexpectedError(self, dispatcher, tracker):
     return [AllSlotsReset(), Restarted()]
 
 
-class NewOKRForm(FormAction):
+class NewObjectiveForm(FormAction):
 
     def name(self) -> Text:
-        return "new_okr_form"
+        return "new_objective_form"
 
     @staticmethod
     def required_slots(tracker: Tracker) -> List[Text]:
-        return ["new_okr"]
-	
+        return ["objective_title"]
+
     def slot_mappings(self) -> Dict[Text, Union[Dict, List[Dict]]]:
         return {
-			"new_okr": [self.from_text()],
-		}
+            "objective_title": [self.from_text()],
+        }
 
     def submit(
         self,
@@ -44,130 +48,75 @@ class NewOKRForm(FormAction):
         tracker: Tracker,
         domain: Dict[Text, Any],
     ) -> List[Dict]:
-        (status, userEmail) = getUserEmailFromUserID(tracker.sender_id)
+        (status, user) = getUserFromSlackId(tracker.sender_id)
         if status:
-            okrBody = tracker.get_slot("new_okr")
-            createNewOKR(okrBody, userEmail)
-            dispatcher.utter_template("utter_okr_created", tracker)
-            return formSuccessful(self, dispatcher, tracker)
-        else:
-            return unexpectedError(self, dispatcher, tracker)
-        
+            (status, objective) = createNewObjective(
+                tracker.get_slot("objective_title"),
+                user['id']
+            )
+            if status:
+                dispatcher.utter_template("utter_objective_created", tracker)
+                # set selected okr for adding KRs
+                return [
+                    AllSlotsReset(),
+                    SlotSet("selected_objective", objective)
+                ]
+        return unexpectedError(self, dispatcher, tracker)
 
-class UpdateOKRForm(FormAction):
+    class ActionAskAddKeyResult(Action):
+        def name(self) -> Text:
+            return "action_ask_add_key_result"
 
-    def name(self) -> Text:
-        return "update_okr_form"
+        def run(self,
+                dispatcher: CollectingDispatcher,
+                tracker: Tracker,
+                domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+            objective = tracker.get_slot("selected_objective")
+            if objective:  # if objective was set (successful creation)
+                dispatcher.utter_template("utter_ask_add_key_result", tracker)
+            return []
 
-    @staticmethod
-    def required_slots(tracker: Tracker) -> List[Text]:
-        return ["selected_okr", "updated_okr"]
-	
-    def slot_mappings(self) -> Dict[Text, Union[Dict, List[Dict]]]:
-        return {
-			"selected_okr": [self.from_text()],
-            "updated_okr": [self.from_text()],
-		}
+    class NewKeyResultForm(FormAction):
 
-    def submit(
-        self,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: Dict[Text, Any],
-    ) -> List[Dict]:
-        (status, userEmail) = getUserEmailFromUserID(tracker.sender_id)
-        if status:
-            okrList = tracker.get_slot("okrs_list")
-            okrSelectedIndex = None
-            try:
-                okrSelectedIndex = int(tracker.get_slot("selected_okr")) - 1
-            except ValueError:
-                return unexpectedError(self, dispatcher, tracker)
-            okrId = okrList[okrSelectedIndex]['id']
-            newOkrBody = tracker.get_slot("updated_okr")
-            updateExistingOKR(okrId, newOkrBody, userEmail)
-            dispatcher.utter_template("utter_okr_updated", tracker)
-            return formSuccessful(self, dispatcher, tracker)
-        else:
-            return unexpectedError(self, dispatcher, tracker)
+        def name(self) -> Text:
+            return "new_key_result_form"
 
-        
-class DeleteOKRForm(FormAction):
+        @staticmethod
+        def required_slots(tracker: Tracker) -> List[Text]:
+            objective = tracker.get_slot("selected_objective")
+            if objective:
+                return ["kr_title", "kr_start_value", "kr_goal_value"]
+            else:  # skip this form if objective is not set
+                return []
 
-    def name(self) -> Text:
-        return "delete_okr_form"
+        def slot_mappings(self) -> Dict[Text, Union[Dict, List[Dict]]]:
+            return {
+                "kr_title": [self.from_text()],
+                "kr_start_value": [self.from_text()],
+                "kr_goal_value": [self.from_text()],
+            }
 
-    @staticmethod
-    def required_slots(tracker: Tracker) -> List[Text]:
-        return ["selected_okr"]
-	
-    def slot_mappings(self) -> Dict[Text, Union[Dict, List[Dict]]]:
-        return {
-			"selected_okr": [self.from_text()],
-		}
-
-    def submit(
-        self,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: Dict[Text, Any],
-    ) -> List[Dict]:
-        (status, userEmail) = getUserEmailFromUserID(tracker.sender_id)
-        if status:
-            okrList = tracker.get_slot("okrs_list")
-            okrSelectedIndex = None
-            try:
-                okrSelectedIndex = int(tracker.get_slot("selected_okr")) - 1
-            except ValueError:
-                return unexpectedError(self, dispatcher, tracker)
-            okrId = okrList[okrSelectedIndex]['id']
-            deleteExistingOKR(okrId, userEmail)
-            dispatcher.utter_template("utter_okr_deleted", tracker)
-            return formSuccessful(self, dispatcher, tracker)
-        else:
-            return unexpectedError(self, dispatcher, tracker)
-
-
-class ListOKRs(Action):
-    def name(self) -> Text:
-        return "action_list_okrs"
-    
-    def run(self,
+        def submit(
+            self,
             dispatcher: CollectingDispatcher,
             tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        (status, userEmail) = getUserEmailFromUserID(tracker.sender_id)
-        if status:
-            okrs = listOKRs(userEmail)
-            nokrs = len(okrs)
-            message = ''
-            if nokrs:
-                message = 'Here are your OKRs \n' + okrsListString(okrs)
-            else:
-                message = 'No OKRs found'
-            dispatcher.utter_message(message)
-            return formSuccessful(self, dispatcher, tracker)
-        else:
-            return unexpectedError(self, dispatcher, tracker)
-
-
-class ListOKRsForSelection(Action):
-    def name(self) -> Text:
-        return "action_list_okrs_for_selection"
-    
-    def run(self,
-            dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        (status, userEmail) = getUserEmailFromUserID(tracker.sender_id)
-        if status:
-            okrs = listOKRs(userEmail)
-            nokrs = len(okrs)
-            if nokrs:
-                dispatcher.utter_message('List of OKRs \n' + okrsListString(okrs))
-                return [SlotSet('okrs_list', okrs)]
-            else:
-                dispatcher.utter_message('No OKRs found')
-                return [Restarted()]
-        else:
-            return unexpectedError(self, dispatcher, tracker)
+            domain: Dict[Text, Any],
+        ) -> List[Dict]:
+            objective = tracker.get_slot("selected_objective")
+            if objective:  # check if objective set otherwise skip
+                (status, user) = getUserFromSlackId(tracker.sender_id)
+                if status:
+                    kr_title = tracker.get_slot("kr_title")
+                    kr_start_value = tracker.get_slot("kr_start_value")
+                    kr_goal_value = tracker.get_slot("kr_goal_value")
+                    (status, kr) = createNewKeyResult(
+                        kr_title, kr_start_value, kr_goal_value,
+                        objective['id'], user['id']
+                    )
+                    if status:
+                        dispatcher.utter_template("utter_key_result_created", tracker)
+                        return [
+                            AllSlotsReset(),
+                        ]
+                return unexpectedError(self, dispatcher, tracker)
+            return []
