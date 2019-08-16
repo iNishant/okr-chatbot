@@ -1,16 +1,25 @@
 intents:
   - create_objective
+  - list_okrs
+  - delete_objective
   - create_key_result
-  - deactivate_form
   - affirm
   - deny
 
 actions:
 - action_ask_add_key_result
+- action_list_objectives
+- action_delete_objective
 - utter_debug
 
 slots:
   objective_title:
+    type: unfeaturized
+    auto_fill: false
+  objectives_list:  # used when user has to select an objective from list
+    type: unfeaturized
+    auto_fill: false
+  selected_objective_number:  # used to set user's choice in objective list
     type: unfeaturized
     auto_fill: false
   selected_objective:
@@ -37,6 +46,12 @@ templates:
   utter_ask_add_key_result:
   - text: 'Do you want to add a key result for this objective?'
 
+  utter_ask_selected_objective_number:
+  - text: 'Select the objective (type number)'
+
+  utter_okr_deleted:
+  - text: "OKR deleted successfully"
+
   utter_ask_kr_title:
   - text: 'Enter title for the key result'
 
@@ -50,7 +65,7 @@ templates:
   - text: 'Key result created successfully'
 
   utter_error_occurred:
-  - text: "An error occurred. Please try again."
+  - text: "An unexpected error occurred. Please try again."
 
   utter_debug:
   - text: "Bot is here"
@@ -58,3 +73,4 @@ templates:
 forms:
   - new_objective_form
   - new_key_result_form
+  - select_objective_form

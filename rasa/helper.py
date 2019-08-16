@@ -10,6 +10,7 @@ def log(*argv):
     print("\n")
     for arg in argv:
         print(arg, end="")
+    print("\n")
 
 
 def getUserFromSlackId(slackId):
@@ -102,3 +103,45 @@ def createNewKeyResult(
     if req.status_code != 200:
         return (False, None)
     return (True, req.json()['data']['insert_keyresult']['returning'][0])
+
+
+def listObjectives(user_id):
+    # returns status, objectives and message string
+    log("listing objectives for user: ", user_id)
+    jsonData = {
+        'query': '''{
+            objective(where: {user_id: {_eq: "%s"}}) {
+              created_at
+              id
+              title
+              updated_at
+              user_id
+            }
+          }
+        ''' % (user_id)
+    }
+    req = requests.post(url=apiEndpoint, json=jsonData)
+    if req.status_code != 200:
+        return (False, None)
+    objectives = req.json()['data']['objective']
+    message = 'Your objectives: \n'
+    for i in range(len(objectives)):
+        message += (str(i+1) + '. ' + objectives[i]['title'] + '\n')
+    return (True, objectives, message)
+
+
+def deleteObjective(objective_id, user_id):
+    # returns status
+    log("deleting objective: ", objective_id)
+    jsonData = {
+        'query': '''mutation {
+            delete_objective(where: {id: {_eq: "%s"}, user_id: {_eq: "%s"}}) {
+              affected_rows
+            }
+        }
+        ''' % (objective_id, user_id)
+    }
+    req = requests.post(url=apiEndpoint, json=jsonData)
+    if req.status_code != 200:
+        return False
+    return True
