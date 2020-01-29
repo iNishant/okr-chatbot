@@ -49,3 +49,28 @@
 - Person: 100
 - Bot: Key result created successfully. Do you want to add one more?
 - Person: No
+
+## Database structure
+
+### user
+
+- id
+- slack_id
+- workspace_id (TODO)
+
+### objective
+
+- id 
+- user_id (user.id)
+- title
+
+
+### keyresult
+
+- id
+- title
+- start_value
+- current_value (TODO)
+- goal_value
+- objective_id (objective.id)
+- user_id (user.id)
