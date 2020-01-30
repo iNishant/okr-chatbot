@@ -5,3 +5,4 @@
 **/*.icloud
 **/*.vscode
 **/*node_modules
+models/

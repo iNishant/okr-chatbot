@@ -35,7 +35,7 @@ slots:
     type: unfeaturized
     auto_fill: false
 
-templates:
+responses:
 
   utter_ask_objective_title:
   - text: "Enter the objective for your new OKR"
@@ -74,3 +74,7 @@ forms:
   - new_objective_form
   - new_key_result_form
   - select_objective_form
+
+session_config:
+  session_expiration_time: 60  # value in minutes, 0 means infinitely long
+  carry_over_slots_to_new_session: false  # set to false to forget slots between sessions

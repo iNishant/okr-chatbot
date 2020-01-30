@@ -2,9 +2,9 @@
 
 ## Installation (>= 8GB RAM)
 
-- Install python3
-- Install pip3 using `sudo apt-get install python3-pip`
-- Install rasa, spacy pipeline and other python packages using `pip3 install -r requirements.txt`
+- Install python 3.7
+- Install pipenv using `pip install pipenv`
+- Install rasa, spacy pipeline and other python packages using `pipenv install`
 
 ## Pipeline setup
 
@@ -15,10 +15,6 @@
 
 ![alt text](https://www.lucidchart.com/publicSegments/view/41f6bf32-6af7-432e-bd61-b1e6288c6763/image.png? "stack")
 
-
-## Guides
-
-- For slack-rasa integration follow [this](https://rasa.com/docs/rasa/user-guide/connectors/slack/)
 
 ## Commands
 
