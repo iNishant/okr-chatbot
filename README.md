@@ -22,6 +22,7 @@
 - Run RASA shell using `rasa shell`
 - Run RASA core using `rasa run`
 - Run RASA custom actions server using `rasa run actions`
+- Train only NLU using `rasa train nlu` and run shell using `rasa shell nlu`
 
 ## Environment variables
 
