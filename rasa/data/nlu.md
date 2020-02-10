@@ -52,13 +52,23 @@
 - increase (nps)[positive_metric] from (6)[start_value] to (9)[goal_value]
 - decrease (churn)[positive_metric] to (2%)[goal_value]
 - decrease (churn)[positive_metric] from (4%)[start_value] to (3%)[goal_value]
+- (win)[milestone_prefix] (product of the year)[kr_milestone] in 2020 <!-- year could be misclassified as metric value -->
+- (get into)[milestone_prefix] (gartner magic quadrant)[kr_milestone] this year
 
+## synonym:win
+- launch
+- reach
+- celebrate
+- get into
 
 ## lookup:kr_positive_metric
 data/lookup_tables/kr_positive_metrics.txt
 
 ## lookup:kr_negative_metric
 data/lookup_tables/kr_negative_metrics.txt
+
+## lookup:kr_milestone
+data/lookup_tables/kr_milestones.txt
 
 ## regex:goal_value
 - [0-9][0-9,\.,\%]+
