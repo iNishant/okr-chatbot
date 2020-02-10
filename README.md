@@ -15,18 +15,21 @@
 
 ![alt text](https://www.lucidchart.com/publicSegments/view/41f6bf32-6af7-432e-bd61-b1e6288c6763/image.png? "stack")
 
-
 ## Commands
 
 - Train RASA using `rasa train`
 - Run RASA shell using `rasa shell`
 - Run RASA core using `rasa run`
 - Run RASA custom actions server using `rasa run actions`
-- Train only NLU using `rasa train nlu` and run shell using `rasa shell nlu`
 
-## Environment variables
+## Environment variables (for deployment only)
 
 - Set `SLACK_BOT_USER_ACCESS_TOKEN` (add in bash profile)
+
+## Testing NLU model
+
+- Train only NLU using `rasa train nlu`
+- Run shell using `rasa shell nlu`
 
 ## Implemented Conversation Flows
 

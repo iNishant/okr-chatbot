@@ -1,7 +1,6 @@
 sales target
 sales growth
 average deal size
-churn
 nps
 customer retention
 product engagement
@@ -9,7 +8,6 @@ product engagement
 leads
 website visitors
 conversions
-cost per lead
 ctr
 new blogs
 blog subscribers

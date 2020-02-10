@@ -46,3 +46,22 @@
 - don't like that
 - no way
 - not really
+
+## intent:new_kr_body
+- increase (nps)[positive_metric] to (8.5)[goal_value]
+- increase (nps)[positive_metric] from (6)[start_value] to (9)[goal_value]
+- decrease (churn)[positive_metric] to (2%)[goal_value]
+- decrease (churn)[positive_metric] from (4%)[start_value] to (3%)[goal_value]
+
+
+## lookup:kr_positive_metric
+data/lookup_tables/kr_positive_metrics.txt
+
+## lookup:kr_negative_metric
+data/lookup_tables/kr_negative_metrics.txt
+
+## regex:goal_value
+- [0-9][0-9,\.,\%]+
+
+## regex:start_value
+- [0-9][0-9,\.,\%]+
