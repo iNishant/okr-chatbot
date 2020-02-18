@@ -8,7 +8,7 @@
 
 ## Pipeline setup
 
-- Download medium sized(md suffix) spacy model `python3 -m spacy download en_core_web_md`
+- Download medium sized(md suffix) spacy model `python -m spacy download en_core_web_md`
 - Run `python -m spacy link en_core_web_md en`
 
 ## Stack
