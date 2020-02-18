@@ -31,6 +31,7 @@
 - Train only NLU using `rasa train nlu`
 - Run shell using `rasa shell nlu`
 - Run e2e tests using `rasa test --stories test_stories.md --e2e` 
+- Run e2e tests using (throw error) `rasa test --stories test_stories.md --e2e --fail-on-prediction-errors` 
 
 ## Implemented Conversation Flows
 
