@@ -8,13 +8,12 @@
 
 ## Pipeline setup
 
-- Download medium sized(md suffix) spacy model `python3 -m spacy download en_core_web_md`
+- Download medium sized(md suffix) spacy model `python -m spacy download en_core_web_md`
 - Run `python -m spacy link en_core_web_md en`
 
 ## Stack
 
 ![alt text](https://www.lucidchart.com/publicSegments/view/41f6bf32-6af7-432e-bd61-b1e6288c6763/image.png? "stack")
-
 
 ## Commands
 
@@ -23,9 +22,16 @@
 - Run RASA core using `rasa run`
 - Run RASA custom actions server using `rasa run actions`
 
-## Environment variables
+## Environment variables (for deployment only)
 
 - Set `SLACK_BOT_USER_ACCESS_TOKEN` (add in bash profile)
+
+## Testing NLU model
+
+- Train only NLU using `rasa train nlu`
+- Run shell using `rasa shell nlu`
+- Run e2e tests using `rasa test --stories test_stories.md --e2e` 
+- Run e2e tests using (throw error) `rasa test --stories test_stories.md --e2e --fail-on-prediction-errors` 
 
 ## Implemented Conversation Flows
 

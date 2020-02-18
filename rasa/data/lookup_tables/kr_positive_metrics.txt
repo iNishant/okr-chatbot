@@ -1,0 +1,16 @@
+sales target
+sales growth
+average deal size
+nps
+customer retention
+product engagement
+
+leads
+website visitors
+conversions
+ctr
+new blogs
+blog subscribers
+media calls
+influencer meetings
+website load speed 
