@@ -6,3 +6,4 @@
 **/*.vscode
 **/*node_modules
 models/
+results/

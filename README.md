@@ -30,6 +30,7 @@
 
 - Train only NLU using `rasa train nlu`
 - Run shell using `rasa shell nlu`
+- Run e2e tests using `rasa test --stories test_stories.md --e2e` 
 
 ## Implemented Conversation Flows
 
