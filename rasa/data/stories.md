@@ -9,6 +9,14 @@
   - form{"name": "new_key_result_form"}
   - form{"name": null}
 
+## create objective path no kr
+* create_objective
+  - new_objective_form
+  - form{"name": "new_objective_form"}
+  - form{"name": null}
+  - action_ask_add_key_result
+* deny
+
 ## create key result path
 * create_key_result
   - action_list_objectives
