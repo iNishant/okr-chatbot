@@ -1,3 +1,5 @@
 churn
-
+CAC
+customer acquisition cost
 cost per lead
+CPL
