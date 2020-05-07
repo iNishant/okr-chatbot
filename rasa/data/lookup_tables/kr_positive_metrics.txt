@@ -1,16 +1,42 @@
 sales target
 sales growth
+sales
 average deal size
+customer interviews
 nps
 customer retention
 product engagement
-
+employee satisfaction
+pulse score
+case studies
+gartner magic quadrant
+product of the year
+feedback loop
+townhall
+q&a meeting
+closed-won sales
 leads
+MQLs
 website visitors
 conversions
 ctr
+click through rate
+inbound links
 new blogs
+newsletters
+interviews
+articles
+whitepaper
+webinars
+customer participation
 blog subscribers
 media calls
 influencer meetings
-website load speed 
+website load speed
+marketing automation
+excel model
+industry conference
+product launch
+creating strategy 
+documentation
+pre-launch update

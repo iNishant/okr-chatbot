@@ -47,31 +47,43 @@
 - no way
 - not really
 
-## intent:new_kr_body
-- increase (nps)[positive_metric] to (8.5)[goal_value]
-- increase (nps)[positive_metric] from (6)[start_value] to (9)[goal_value]
-- decrease (churn)[positive_metric] to (2%)[goal_value]
-- decrease (churn)[positive_metric] from (4%)[start_value] to (3%)[goal_value]
-- (win)[milestone_prefix] (product of the year)[kr_milestone] in 2020 <!-- year could be misclassified as metric value -->
-- (get into)[milestone_prefix] (gartner magic quadrant)[kr_milestone] this year
+## intent:new_kr_title
+- increase [nps](positive_metric) to [8.5](goal_value)
+- increase [nps](positive_metric) from [6](start_value) to [9](goal_value)
+- increase [sales growth](positive_metric) from [5%](start_value) to [10%](goal_value)
+- decrease [churn](negative_metric) to [2%](goal_value)
+- decrease [churn](negative_metric) from [4%](start_value) to [3%](goal_value)
+- decrease [CAC](negative_metric) from [100](start_value) to [50](goal_value)
 
-## synonym:win
+## synonym:increase
+- improve
+- better
 - launch
 - reach
 - celebrate
 - get into
+- finalize
+- enhance
+- maximise
+- optimise
 
-## lookup:kr_positive_metric
+## synonym:decrease
+- reduce
+- cut down
+- avoid
+- negate
+- lessen
+- minimise
+
+## lookup:positive_metric
 data/lookup_tables/kr_positive_metrics.txt
 
-## lookup:kr_negative_metric
+## lookup:negative_metric
 data/lookup_tables/kr_negative_metrics.txt
 
-## lookup:kr_milestone
-data/lookup_tables/kr_milestones.txt
-
-## regex:goal_value
-- [0-9][0-9,\.,\%]+
+<!-- TODO: check for INR, dollar symbol in numbers -->
+## regex:goal_value 
+- [0-9]?[0-9,\.,\%]+
 
 ## regex:start_value
-- [0-9][0-9,\.,\%]+
+- [0-9]?[0-9,\.,\%]+

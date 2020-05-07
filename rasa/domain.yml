@@ -5,6 +5,7 @@ intents:
   - create_key_result
   - affirm
   - deny
+  - new_kr_title
 
 actions:
 - action_ask_add_key_result
