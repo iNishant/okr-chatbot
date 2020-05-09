@@ -1,0 +1,13 @@
+# Configuration for Rasa NLU.
+# https://rasa. c com/docs/rasa/nlu/components/
+language: en
+pipeline: pretrained_embeddings_spacy
+# change to supervised pipeline once training examples > 1000
+
+# Configuration for Rasa Core.
+# https://rasa.com/docs/rasa/core/policies/
+policies:
+  - name: MemoizationPolicy
+  - name: KerasPolicy
+  - name: MappingPolicy
+  - name: "FormPolicy"

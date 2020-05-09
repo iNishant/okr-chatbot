@@ -1,0 +1,82 @@
+intents:
+  - create_objective
+  - list_okrs
+  - delete_objective
+  - create_key_result
+  - affirm
+  - deny
+  - new_kr_title
+  - new_objectives_title
+
+actions:
+- action_ask_add_key_result
+- action_list_objectives
+- action_delete_objective
+- utter_debug
+
+slots:
+  objective_title:
+    type: unfeaturized
+    auto_fill: false
+  objectives_list:  # used when user has to select an objective from list
+    type: unfeaturized
+    auto_fill: false
+  selected_objective_number:  # used to set user's choice in objective list
+    type: unfeaturized
+    auto_fill: false
+  selected_objective:
+    type: unfeaturized
+    auto_fill: false
+  kr_title:
+    type: unfeaturized
+    auto_fill: false
+  kr_start_value:
+    type: unfeaturized
+    auto_fill: false
+  kr_goal_value:
+    type: unfeaturized
+    auto_fill: false
+
+responses:
+
+  utter_ask_objective_title:
+  - text: "Enter the objective for your new OKR"
+
+  utter_objective_created:
+  - text: "Objective created successfully"
+
+  utter_ask_add_key_result:
+  - text: 'Do you want to add a key result for this objective?'
+
+  utter_ask_selected_objective_number:
+  - text: 'Select the objective (type number)'
+
+  utter_okr_deleted:
+  - text: "OKR deleted successfully"
+
+  utter_ask_kr_title:
+  - text: 'Enter title for the key result'
+
+  utter_ask_kr_start_value:
+  - text: 'Enter start value for the key result metric'
+
+  utter_ask_kr_goal_value:
+  - text: 'Enter goal value for the key result metric'
+
+  utter_key_result_created:
+  - text: 'Key result created successfully'
+
+  utter_error_occurred:
+  - text: "An unexpected error occurred. Please try again."
+
+  utter_debug:
+  - text: "Bot is here"
+
+forms:
+  - new_objective_form
+  - new_key_result_form
+  - select_objective_form
+
+session_config:
+  session_expiration_time: 60  # value in minutes, 0 means infinitely long
+  carry_over_slots_to_new_session: false  # set to false to forget slots between sessions
